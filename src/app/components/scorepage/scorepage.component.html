@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()">
+    <label for="selectedDate">Select a Date:</label>
+    <input type="date" id="selectedDate" name="selectedDate" [(ngModel)]="date">
+    <button type="submit">Submit</button>
+</form>
+<div class="container">
+    <div >
+      <div class="row" *ngFor="let match of schedule; let i = index">
+            <p>{{ match.Cnm }}</p>
+            <div class="card mb-3">
+                <div class="card-body">
+            <div class="col-4" *ngFor="let event of match.Events">
+              <p>{{ event.T1[0].Nm }}</p>
+              <p>{{ event.T2[0].Nm }}</p>
+              <p class="card-text">{{ event.ECo }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- Close the row and start a new row after every 3 cards -->
+        <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
+      </div>
+    </div>
+  </div>
+  
+  
